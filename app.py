@@ -5,8 +5,9 @@ from dash import Dash, html, dcc, Input, Output
 # =============================
 # Daten laden
 # =============================
-carb = pd.read_excel("carbohydratasen.xlsx", decimal=",")
-prot = pd.read_excel("proteasen.xlsx", decimal=",")
+carb = pd.read_excel(FILE_PATH, sheet_name="Carbohydratasen", header=0)
+prot = pd.read_excel(FILE_PATH, sheet_name="Proteasen", header=0)
+filme = pd.read_excel(FILE_PATH, sheet_name="Filme", header=0)
 
 # =============================
 # Dash App
@@ -14,7 +15,7 @@ prot = pd.read_excel("proteasen.xlsx", decimal=",")
 app = Dash(__name__)
 
 app.layout = html.Div([
-    html.H1("📊 Interaktive Datenkarte — AniMOX", style={'textAlign': 'center'}),
+    html.H1("📊 Interaktive Datenkarte", style={'textAlign': 'center'}),
 
     # Dataset-Auswahl
     html.Div([
@@ -224,4 +225,5 @@ def update_plot(dataset, mats, enz, mm_selected, carb_opts, prot_opts):
 # =============================
 if __name__ == "__main__":
     app.run_server(debug=True)
+
 
