@@ -5,6 +5,7 @@ from dash import Dash, html, dcc, Input, Output
 # =============================
 # Daten laden
 # =============================
+FILE_PATH = "Datamap.xlsx"
 carb = pd.read_excel(FILE_PATH, sheet_name="Carbohydratasen", header=0)
 prot = pd.read_excel(FILE_PATH, sheet_name="Proteasen", header=0)
 filme = pd.read_excel(FILE_PATH, sheet_name="Filme", header=0)
@@ -225,5 +226,6 @@ def update_plot(dataset, mats, enz, mm_selected, carb_opts, prot_opts):
 # =============================
 if __name__ == "__main__":
     app.run_server(debug=True)
+
 
 
